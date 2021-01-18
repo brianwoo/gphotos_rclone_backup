@@ -113,7 +113,9 @@ Modify the **email address** below and send yourself a test email message:
 
 ```bash
 backup$ echo "This is a test" > test.txt
-backup$ python3 ../gphotos_rclone_backup/sendmail.py 'from.sender@gmail.com' 'to.recipient@gmail.com' 'First Email Message!' -pm './test.txt'
+backup$ python3 ../gphotos_rclone_backup/sendmail.py \
+          'from.sender@gmail.com' 'to.recipient@gmail.com' 'First Email Message!' \
+          -pm './test.txt'
 ```
 
 Check your email. An email message with subject "First Email Message!" should arrive your inbox.
