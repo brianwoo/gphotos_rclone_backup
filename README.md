@@ -92,7 +92,8 @@ To backup any **Shared Albums** that have pictures created/modified between **20
 Note: you can also backup albums by specifying **album** instead of **shared-album**.
 
 ```
-backup$ python3 ../gphotos_rclone_backup/backup.py gphotos shared-album ./ "2021-01-01" "2021-01-31"
+backup$ python3 ../gphotos_rclone_backup/backup.py gphotos shared-album ./ \
+          "2021-01-01" "2021-01-31"
 Getting gPhotos album data...
 Starting backup...
 # Backing up album: 20201231 New Years Eve
@@ -103,13 +104,15 @@ Starting backup...
 The Shared Album has been backed up:
 ```bash
 backup$ ls 
-'20201231 New Years Eve'   backup-1610912365.txt   client_secret.json   gmail_token.json   gphotos-1610912365.json
+'20201231 New Years Eve'   backup-1610912365.txt   client_secret.json   
+gmail_token.json           gphotos-1610912365.json
 
 ```
 
 To backup any **Shared Albums** that have pictures created/modified between **2021-01-01** to **2021-01-31** (with **clean-up** and without email of backup status): 
 ```
-backup$ python3 ../gphotos_rclone_backup/backup.py gphotos shared-album ./ "2021-01-01" "2021-01-31" -clean
+backup$ python3 ../gphotos_rclone_backup/backup.py gphotos shared-album ./ \
+          "2021-01-01" "2021-01-31" -clean
 Getting gPhotos album data...
 Starting backup...
 # Backing up album: 20201231 New Years Eve
@@ -127,7 +130,9 @@ backup$ ls
 
 To backup any **Shared Albums** that have pictures created/modified between **2021-01-01** to **2021-01-31** (with **clean-up** and **email support**): 
 ```
-backup$ python3 ../gphotos_rclone_backup/backup.py gphotos shared-album ./ "2021-01-01" "2021-01-31" -clean -sm -smFrom "me@gmail.com" -smTo "my.recipient@gmail.com"
+backup$ python3 ../gphotos_rclone_backup/backup.py gphotos shared-album ./ \
+          "2021-01-01" "2021-01-31" -clean \
+          -sm -smFrom "me@gmail.com" -smTo "my.recipient@gmail.com"
 
 Getting gPhotos album data...
 Starting backup...
@@ -145,5 +150,6 @@ You should receive an email:
 
 Since we are using RClone to manage different cloud providers, we can also use a RClone remote as a destination:
 ```
-backup$ python3 ../gphotos_rclone_backup/backup.py gphotos shared-album dropbox:backup "2021-01-01" "2021-01-31" 
+backup$ python3 ../gphotos_rclone_backup/backup.py gphotos shared-album dropbox:backup \
+          "2021-01-01" "2021-01-31" 
 ```
