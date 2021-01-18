@@ -1,4 +1,4 @@
-# Google Photos Albums Backup using RClone
+# Google Photos Albums Backup Tool
 
 This tool is to backup your **Albums** and **Shared Albums** based on a specified date range.
 
