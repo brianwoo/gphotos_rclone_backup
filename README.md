@@ -57,7 +57,7 @@ To enable Gmail support, you will need to install a Python package: **simplegmai
 pip3 install simplegmail
 ```
 
-You will also need to setup Gmail API access and authentication, please refer to this guide [here](SETUP_GMAIL.md)
+You will also need to setup Gmail API access and authentication, please refer to this guide [here](SETUP_GMAIL.md).
 
 
 ## Backup Google Photos (Examples)
@@ -89,7 +89,7 @@ optional arguments:
 
 To backup any **Shared Albums** that have pictures created/modified between **2021-01-01** to **2021-01-31** (without clean-up and without email of backup status): 
 
-Note: you can also backup albums by specifying **album** instead of **shared-album**
+Note: you can also backup albums by specifying **album** instead of **shared-album**.
 
 ```
 backup$ python3 ../gphotos_rclone_backup/backup.py gphotos shared-album ./ "2021-01-01" "2021-01-31"
@@ -100,7 +100,7 @@ Starting backup...
   Status: True
 ```
 
-The Shared Album has been backed up
+The Shared Album has been backed up:
 ```bash
 backup$ ls 
 '20201231 New Years Eve'   backup-1610912365.txt   client_secret.json   gmail_token.json   gphotos-1610912365.json
@@ -118,7 +118,7 @@ Starting backup...
 # Cleaning up files
 ```
 
-The Shared Album has been backed up (log and meta files cleaned up)
+The Shared Album has been backed up (log and meta files cleaned up):
 ```bash
 backup$ ls 
 '20201231 New Years Eve'   client_secret.json   gmail_token.json
@@ -138,7 +138,7 @@ Starting backup...
 # Cleaning up files
 ```
 
-You should receive an email
+You should receive an email:
 
 ![email_sample](/assets/email_sample.png)
 
