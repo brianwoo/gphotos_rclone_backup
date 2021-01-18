@@ -20,6 +20,8 @@ Click [here](https://rclone.org/downloads/) to download
 
 **Setup Google Photos with RClone**
 
+Note: Make sure the rclone command is in PATH!
+
 rclone config
 
 ## Checkout the Project and Setup Directory Structure
