@@ -10,10 +10,10 @@ from datetime import datetime
 from pathlib import Path
 
 ###############################################################################
-# GPhotos Backup Tool using RClone
+# GPhotos Backup Albums Tool using RClone
 #
 # To execute: 
-# ./backup.py gphotos album ./backupDir '2021-01-01' '2021-01-31' \
+# ./backup_photos.py gphotos ./backupDir '2021' \
 #   -sm -smFrom 'me@gmail.com' \ 
 #   -smTo 'logviewer@gmail.com' \ 
 #   -clean
@@ -152,12 +152,10 @@ def sendLogViaEmail(sender, to, rcloneRemote, albumType, dest, dateFrom, dateTo)
 
 
 def getCmdlineArgs():
-    parser = argparse.ArgumentParser(description='GPhotos Backup Tool via RClone')
+    parser = argparse.ArgumentParser(description='GPhotos Backup Photos Tool via RClone')
     parser.add_argument('remote', help="RClone remote")
-    parser.add_argument('albumType', choices=ALBUM_TYPES, help="Supported album types")
     parser.add_argument('dest', help="Destination: dir or RClone remote")
-    parser.add_argument('dateFrom', type=lambda s: datetime.strptime(s, '%Y-%m-%d'), help="From date YYYY-MM-DD")    
-    parser.add_argument('dateTo', type=lambda s: datetime.strptime(s, '%Y-%m-%d'), help="To date YYYY-MM-DD")
+    parser.add_argument('year', type=lambda s: datetime.strptime(s, '%Y'), help="Year YYYY")    
     parser.add_argument('-sm', default=False, action='store_true', help="Send log via Email?")
     parser.add_argument('-smFrom', help="If -sm is set, sender email addr is needed")
     parser.add_argument('-smTo', help="If -sm is set, recipient email addr is needed")
@@ -171,7 +169,7 @@ def getCmdlineArgs():
 
 if __name__ == "__main__":
     args = getCmdlineArgs()
-    backupAlbums(args.remote, args.albumType, args.dest, args.dateFrom, args.dateTo)
+    # backupAlbums(args.remote, args.albumType, args.dest, args.dateFrom, args.dateTo)
     if (args.sm):
        sendLogViaEmail(args.smFrom, args.smTo, args.remote, args.albumType, args.dest, args.dateFrom, args.dateTo)
     if (args.clean):
