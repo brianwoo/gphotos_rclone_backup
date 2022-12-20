@@ -57,16 +57,14 @@ def cleanupLogAndFiles():
     print("# Cleaning up files")
     os.remove(LOG_FILE_PATH)
 
-def sendLogViaEmail(sender, to, rcloneRemote, albumType, dest, dateFrom, dateTo):
+def sendLogViaEmail(sender, to, rcloneRemote, dest, year):
     import sendmail
     print(f'# Send Log Via Email ({to})')
-    dateFromStr = dateFrom.strftime("%Y-%m-%d")
-    dateToStr = dateTo.strftime("%Y-%m-%d")
-    subject = f'GPhotos Backup Status ({albumType}): {dateFromStr} - {dateToStr}'
+    subject = f'GPhotos Backup Status ({year})'
     htmlMsg = f'''<h2>Backup Status:</h2>
-        <span style="font-size: 130%;"><b>From: </b></span><span style="font-size: 120%;">{rcloneRemote}:{albumType},</span>
+        <span style="font-size: 130%;"><b>From: </b></span><span style="font-size: 120%;">{rcloneRemote},</span>
         <span style="font-size: 130%;"><b>To: </b></span><span style="font-size: 120%;">{dest},</span> 
-        <span style="font-size: 130%;"><b>Period: </b></span><span style="font-size: 120%;">{dateFromStr} - {dateToStr}</span>
+        <span style="font-size: 130%;"><b>Period: </b></span><span style="font-size: 120%;">{year}</span>
         '''
     sendmail.sendMail(sender, to, subject, htmlMsg, None, [LOG_FILE_PATH], False)
 
@@ -91,6 +89,6 @@ if __name__ == "__main__":
     args = getCmdlineArgs()
     backupPhotosByYear(args.remote, args.year.strftime("%Y"), args.dest)
     if (args.sm):
-       sendLogViaEmail(args.smFrom, args.smTo, args.remote, args.albumType, args.dest, args.dateFrom, args.dateTo)
+       sendLogViaEmail(args.smFrom, args.smTo, args.remote, args.dest, args.year)
     if (args.clean):
        cleanupLogAndFiles()
