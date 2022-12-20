@@ -89,6 +89,6 @@ if __name__ == "__main__":
     args = getCmdlineArgs()
     backupPhotosByYear(args.remote, args.year.strftime("%Y"), args.dest)
     if (args.sm):
-       sendLogViaEmail(args.smFrom, args.smTo, args.remote, args.dest, args.year)
+       sendLogViaEmail(args.smFrom, args.smTo, args.remote, args.dest, args.year.strftime("%Y"))
     if (args.clean):
        cleanupLogAndFiles()
